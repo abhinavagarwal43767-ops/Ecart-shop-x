@@ -5,6 +5,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { API } from '../../interceptors/api.config';
 
 @Component({
   selector: 'app-home',
@@ -35,7 +36,7 @@ export class HomeComponent {
   }
 
   getCategories() {
-    this.http.get<any[]>('http://localhost:5000/api/categories?limit=10')
+    this.http.get<any[]>(API.baseUrl)
       .subscribe(res => this.categories = res);
   }
 
