@@ -55,6 +55,7 @@
               "sourceMap": true
             }
           },
+
           "defaultConfiguration": "production"
         },
         "serve": {
@@ -97,3 +98,4 @@
     }
   }
 }
+
