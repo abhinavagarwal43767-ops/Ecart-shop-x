@@ -36,7 +36,7 @@ export class HomeComponent {
   }
 
   getCategories() {
-    this.http.get<any[]>(API.baseUrl)
+    this.http.get<any[]>(`${API.baseUrl}/categories?limit=10`)
       .subscribe(res => this.categories = res);
   }
 
