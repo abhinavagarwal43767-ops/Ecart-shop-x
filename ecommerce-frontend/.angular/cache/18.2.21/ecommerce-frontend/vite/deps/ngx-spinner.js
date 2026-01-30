@@ -4,12 +4,16 @@ import {
   style,
   transition,
   trigger
-} from "./chunk-GUAXQ22X.js";
+} from "./chunk-JVHCK5N5.js";
 import {
   DomSanitizer
-} from "./chunk-GWINICPX.js";
-import "./chunk-7WFU6RFN.js";
-import "./chunk-S72L5TO7.js";
+} from "./chunk-4ZUG5RNT.js";
+import "./chunk-R4Y4VAZQ.js";
+import {
+  CommonModule,
+  NgForOf,
+  NgIf
+} from "./chunk-55KOJ3D3.js";
 import {
   BehaviorSubject,
   ChangeDetectionStrategy,
@@ -26,7 +30,6 @@ import {
   Subject,
   ViewChild,
   filter,
-  inject,
   makeEnvironmentProviders,
   setClassMetadata,
   takeUntil,
@@ -34,7 +37,6 @@ import {
   ɵɵStandaloneFeature,
   ɵɵadvance,
   ɵɵclassMap,
-  ɵɵconditional,
   ɵɵdefineComponent,
   ɵɵdefineInjectable,
   ɵɵdefineInjector,
@@ -52,14 +54,11 @@ import {
   ɵɵprojectionDef,
   ɵɵproperty,
   ɵɵqueryRefresh,
-  ɵɵrepeater,
-  ɵɵrepeaterCreate,
-  ɵɵrepeaterTrackByIdentity,
   ɵɵsanitizeHtml,
   ɵɵstyleProp,
   ɵɵtemplate,
   ɵɵviewQuery
-} from "./chunk-AFS2UPOK.js";
+} from "./chunk-HIJSW2FA.js";
 import {
   __spreadProps,
   __spreadValues
@@ -68,15 +67,15 @@ import {
 // node_modules/ngx-spinner/fesm2022/ngx-spinner.mjs
 var _c0 = ["overlay"];
 var _c1 = ["*"];
-function NgxSpinnerComponent_Conditional_0_Conditional_2_For_2_Template(rf, ctx) {
+function NgxSpinnerComponent_div_0_div_2_div_1_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelement(0, "div");
   }
 }
-function NgxSpinnerComponent_Conditional_0_Conditional_2_Template(rf, ctx) {
+function NgxSpinnerComponent_div_0_div_2_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementStart(0, "div");
-    ɵɵrepeaterCreate(1, NgxSpinnerComponent_Conditional_0_Conditional_2_For_2_Template, 1, 0, "div", null, ɵɵrepeaterTrackByIdentity);
+    ɵɵtemplate(1, NgxSpinnerComponent_div_0_div_2_div_1_Template, 1, 0, "div", 6);
     ɵɵelementEnd();
   }
   if (rf & 2) {
@@ -84,12 +83,12 @@ function NgxSpinnerComponent_Conditional_0_Conditional_2_Template(rf, ctx) {
     ɵɵclassMap(ctx_r0.spinner.class);
     ɵɵstyleProp("color", ctx_r0.spinner.color);
     ɵɵadvance();
-    ɵɵrepeater(ctx_r0.spinner.divArray);
+    ɵɵproperty("ngForOf", ctx_r0.spinner.divArray);
   }
 }
-function NgxSpinnerComponent_Conditional_0_Conditional_3_Template(rf, ctx) {
+function NgxSpinnerComponent_div_0_div_3_Template(rf, ctx) {
   if (rf & 1) {
-    ɵɵelement(0, "div", 4);
+    ɵɵelement(0, "div", 7);
     ɵɵpipe(1, "safeHtml");
   }
   if (rf & 2) {
@@ -97,10 +96,10 @@ function NgxSpinnerComponent_Conditional_0_Conditional_3_Template(rf, ctx) {
     ɵɵproperty("innerHTML", ɵɵpipeBind1(1, 1, ctx_r0.template), ɵɵsanitizeHtml);
   }
 }
-function NgxSpinnerComponent_Conditional_0_Template(rf, ctx) {
+function NgxSpinnerComponent_div_0_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementStart(0, "div", 2, 0);
-    ɵɵtemplate(2, NgxSpinnerComponent_Conditional_0_Conditional_2_Template, 3, 4, "div", 3)(3, NgxSpinnerComponent_Conditional_0_Conditional_3_Template, 2, 3, "div", 4);
+    ɵɵtemplate(2, NgxSpinnerComponent_div_0_div_2_Template, 2, 5, "div", 3)(3, NgxSpinnerComponent_div_0_div_3_Template, 2, 3, "div", 4);
     ɵɵelementStart(4, "div", 5);
     ɵɵprojection(5);
     ɵɵelementEnd()();
@@ -110,9 +109,9 @@ function NgxSpinnerComponent_Conditional_0_Template(rf, ctx) {
     ɵɵstyleProp("background-color", ctx_r0.spinner.bdColor)("z-index", ctx_r0.spinner.zIndex)("position", ctx_r0.spinner.fullScreen ? "fixed" : "absolute");
     ɵɵproperty("@.disabled", ctx_r0.disableAnimation)("@fadeIn", "in");
     ɵɵadvance(2);
-    ɵɵconditional(!ctx_r0.template ? 2 : -1);
+    ɵɵproperty("ngIf", !ctx_r0.template);
     ɵɵadvance();
-    ɵɵconditional(ctx_r0.template ? 3 : -1);
+    ɵɵproperty("ngIf", ctx_r0.template);
     ɵɵadvance();
     ɵɵstyleProp("z-index", ctx_r0.spinner.zIndex);
   }
@@ -268,15 +267,17 @@ var NgxSpinnerService = class _NgxSpinnerService {
 })();
 var NGX_SPINNER_CONFIG = new InjectionToken("NGX_SPINNER_CONFIG");
 var SafeHtmlPipe = class _SafeHtmlPipe {
-  constructor() {
-    this.sanitizer = inject(DomSanitizer);
+  constructor(_sanitizer) {
+    this._sanitizer = _sanitizer;
   }
-  transform(value) {
-    return value ? this.sanitizer.bypassSecurityTrustHtml(value) : "";
+  transform(v) {
+    if (v) {
+      return this._sanitizer.bypassSecurityTrustHtml(v);
+    }
   }
   static {
     this.ɵfac = function SafeHtmlPipe_Factory(__ngFactoryType__) {
-      return new (__ngFactoryType__ || _SafeHtmlPipe)();
+      return new (__ngFactoryType__ || _SafeHtmlPipe)(ɵɵdirectiveInject(DomSanitizer, 16));
     };
   }
   static {
@@ -295,7 +296,9 @@ var SafeHtmlPipe = class _SafeHtmlPipe {
       name: "safeHtml",
       standalone: true
     }]
-  }], null, null);
+  }], () => [{
+    type: DomSanitizer
+  }], null);
 })();
 var NgxSpinnerComponent = class _NgxSpinnerComponent {
   // TODO: https://github.com/Napster2210/ngx-spinner/issues/259
@@ -492,17 +495,17 @@ var NgxSpinnerComponent = class _NgxSpinnerComponent {
       ngContentSelectors: _c1,
       decls: 1,
       vars: 1,
-      consts: [["overlay", ""], [1, "ngx-spinner-overlay", 3, "background-color", "z-index", "position"], [1, "ngx-spinner-overlay"], [3, "class", "color"], [3, "innerHTML"], [1, "loading-text"]],
+      consts: [["overlay", ""], ["class", "ngx-spinner-overlay", 3, "background-color", "z-index", "position", 4, "ngIf"], [1, "ngx-spinner-overlay"], [3, "class", "color", 4, "ngIf"], [3, "innerHTML", 4, "ngIf"], [1, "loading-text"], [4, "ngFor", "ngForOf"], [3, "innerHTML"]],
       template: function NgxSpinnerComponent_Template(rf, ctx) {
         if (rf & 1) {
           ɵɵprojectionDef();
-          ɵɵtemplate(0, NgxSpinnerComponent_Conditional_0_Template, 6, 12, "div", 1);
+          ɵɵtemplate(0, NgxSpinnerComponent_div_0_Template, 6, 12, "div", 1);
         }
         if (rf & 2) {
-          ɵɵconditional(ctx.spinner.show ? 0 : -1);
+          ɵɵproperty("ngIf", ctx.spinner.show);
         }
       },
-      dependencies: [SafeHtmlPipe],
+      dependencies: [SafeHtmlPipe, NgIf, NgForOf],
       styles: [".ngx-spinner-overlay[_ngcontent-%COMP%]{position:fixed;top:0;left:0;width:100%;height:100%}.ngx-spinner-overlay[_ngcontent-%COMP%] > div[_ngcontent-%COMP%]:not(.loading-text){top:50%;left:50%;margin:0;position:absolute;transform:translate(-50%,-50%)}.loading-text[_ngcontent-%COMP%]{position:absolute;top:60%;left:50%;transform:translate(-50%,-60%)}"],
       data: {
         animation: [trigger("fadeIn", [state("in", style({
@@ -521,7 +524,8 @@ var NgxSpinnerComponent = class _NgxSpinnerComponent {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NgxSpinnerComponent, [{
     type: Component,
     args: [{
-      imports: [SafeHtmlPipe],
+      imports: [SafeHtmlPipe, NgIf, NgForOf],
+      standalone: true,
       selector: "ngx-spinner",
       changeDetection: ChangeDetectionStrategy.OnPush,
       animations: [trigger("fadeIn", [state("in", style({
@@ -531,31 +535,24 @@ var NgxSpinnerComponent = class _NgxSpinnerComponent {
       }), animate(300)]), transition(":leave", animate(200, style({
         opacity: 0
       })))])],
-      template: `@if (spinner.show) {
-  <div
-    [@.disabled]="disableAnimation"
-    [@fadeIn]="'in'"
-    class="ngx-spinner-overlay"
-    [style.background-color]="spinner.bdColor"
-    [style.z-index]="spinner.zIndex"
-    [style.position]="spinner.fullScreen ? 'fixed' : 'absolute'"
-    #overlay
-    >
-    @if (!template) {
-      <div [class]="spinner.class" [style.color]="spinner.color">
-        @for (index of spinner.divArray; track index) {
-          <div></div>
-        }
-      </div>
-    }
-    @if (template) {
-      <div [innerHTML]="template | safeHtml"></div>
-    }
-    <div class="loading-text" [style.z-index]="spinner.zIndex">
-      <ng-content></ng-content>
-    </div>
+      template: `<div
+  [@.disabled]="disableAnimation"
+  [@fadeIn]="'in'"
+  *ngIf="spinner.show"
+  class="ngx-spinner-overlay"
+  [style.background-color]="spinner.bdColor"
+  [style.z-index]="spinner.zIndex"
+  [style.position]="spinner.fullScreen ? 'fixed' : 'absolute'"
+  #overlay
+>
+  <div *ngIf="!template" [class]="spinner.class" [style.color]="spinner.color">
+    <div *ngFor="let index of spinner.divArray"></div>
   </div>
-}
+  <div *ngIf="template" [innerHTML]="template | safeHtml"></div>
+  <div class="loading-text" [style.z-index]="spinner.zIndex">
+    <ng-content></ng-content>
+  </div>
+</div>
 `,
       styles: [".ngx-spinner-overlay{position:fixed;top:0;left:0;width:100%;height:100%}.ngx-spinner-overlay>div:not(.loading-text){top:50%;left:50%;margin:0;position:absolute;transform:translate(-50%,-50%)}.loading-text{position:absolute;top:60%;left:50%;transform:translate(-50%,-60%)}\n"]
     }]
@@ -628,19 +625,21 @@ var NgxSpinnerModule = class _NgxSpinnerModule {
   static {
     this.ɵmod = ɵɵdefineNgModule({
       type: _NgxSpinnerModule,
-      imports: [NgxSpinnerComponent, SafeHtmlPipe],
+      imports: [CommonModule, NgxSpinnerComponent, SafeHtmlPipe],
       exports: [NgxSpinnerComponent]
     });
   }
   static {
-    this.ɵinj = ɵɵdefineInjector({});
+    this.ɵinj = ɵɵdefineInjector({
+      imports: [CommonModule]
+    });
   }
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NgxSpinnerModule, [{
     type: NgModule,
     args: [{
-      imports: [NgxSpinnerComponent, SafeHtmlPipe],
+      imports: [CommonModule, NgxSpinnerComponent, SafeHtmlPipe],
       exports: [NgxSpinnerComponent]
     }]
   }], null, null);

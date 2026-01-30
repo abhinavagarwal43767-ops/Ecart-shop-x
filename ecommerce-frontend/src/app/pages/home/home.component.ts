@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { API } from '../../interceptors/api.config';
@@ -10,7 +10,7 @@ import { API } from '../../interceptors/api.config';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -43,7 +43,9 @@ export class HomeComponent {
   shopNow() {
     window.scrollTo({ top: document.body.scrollHeight / 2, behavior: 'smooth' });
   }
-
+  get token() {
+    return !!localStorage.getItem('token');
+  }
   submitForm() {
     if (this.contactForm.valid) {
       this.authService.sendMessage({

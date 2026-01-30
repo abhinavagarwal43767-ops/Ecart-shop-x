@@ -24,6 +24,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
               }
             ],
             "styles": [
@@ -55,7 +60,6 @@
               "sourceMap": true
             }
           },
-
           "defaultConfiguration": "production"
         },
         "serve": {
@@ -98,4 +102,3 @@
     }
   }
 }
-

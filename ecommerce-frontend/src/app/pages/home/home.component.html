@@ -99,33 +99,87 @@
   </div>
 </section>
 
+<main class="main-content">
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
 
-<section class="contact">
-  <h2>Contact Us</h2>
-  <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+      <input type="text" placeholder="Your Name" formControlName="name">
+      <div class="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+        Name is required.
+      </div>
 
-    <input type="text" placeholder="Your Name" formControlName="name">
-    <div class="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
-      Name is required.
+      <input type="email" placeholder="Your Email" formControlName="email">
+      <div class="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+        <div *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</div>
+        <div *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email format.</div>
+      </div>
+
+      <textarea rows="4" placeholder="Your Message" formControlName="message"></textarea>
+      <div class="error" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid">
+        Message is required.
+      </div>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+  </section>
+</main>
+
+<footer class="rh-footer">
+
+  <!-- angled top -->
+  <div class="rh-footer-angle"></div>
+
+  <div class="rh-footer-content">
+
+    <!-- Brand -->
+    <div class="rh-footer-col brand">
+      <h3>Abhinav<span> Agrawal</span></h3>
+      <p class="tagline">Full-Stack Developer • Web & E-commerce Apps</p>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/123avb/" target="_blank" rel="noopener">
+          in
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/abhinavagarwal43767-ops/Ecart-shop-x" target="_blank" rel="noopener">
+          gh
+        </a>
+
+        <!-- Twitter (example, leave blank or remove if not needed) -->
+        <a href="#" target="_blank" rel="noopener">
+          tw
+        </a>
+      </div>
+
     </div>
 
-    <input type="email" placeholder="Your Email" formControlName="email">
-    <div class="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
-      <div *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</div>
-      <div *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email format.</div>
+    <!-- Quick links -->
+    <div class="rh-footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
+        <li><a *ngIf="token" routerLink="/cart" routerLinkActive="active">Cart</a></li>
+      </ul>
     </div>
 
-    <textarea rows="4" placeholder="Your Message" formControlName="message"></textarea>
-    <div class="error" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid">
-      Message is required.
+
+    <!-- Contact -->
+    <div class="rh-footer-col">
+      <h4>Contact</h4>
+      <p>Email:<br><a href="mailto:abhinavagarwal43767@gmail.com">{{'abhinavagarwal43767@gmail.com'}}</a></p>
+      <p>Phone:<br>+91-XXXXXXXXXX</p>
     </div>
+  </div>
 
-    <button type="submit">Send Message</button>
-  </form>
+  <!-- bottom bar -->
+  <div class="rh-footer-bottom">
+    © 2026 Abhinav Agrawal. All rights reserved.
+  </div>
 
-</section>
-
-
-<footer class="footer">
-  <p>© 2026 YourStore. All rights reserved.</p>
 </footer>
