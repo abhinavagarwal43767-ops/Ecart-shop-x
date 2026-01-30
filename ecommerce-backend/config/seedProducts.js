@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 const Category = require('../models/Category');
-const Product = require('../models/Product');
+const Product = require('../models/product');
 const connectDB = require('../config/db');
 
 const categories = {
