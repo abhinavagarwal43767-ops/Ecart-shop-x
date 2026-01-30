@@ -1,0 +1,46 @@
+<div class="auth">
+  <form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+    <h2>Create Account</h2>
+
+    <input
+      type="text"
+      placeholder="Full Name"
+      formControlName="name"
+      autocomplete="off"
+      [ngClass]="{'invalid': registerForm.get('name')?.invalid && registerForm.get('name')?.touched}"
+    />
+    <div class="error" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+      Name is required
+    </div>
+
+    <input
+      type="email"
+      placeholder="Email"
+      formControlName="email"
+      autocomplete="new-email"
+      [ngClass]="{'invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}"
+    />
+    <div class="error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+      <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</span>
+      <span *ngIf="registerForm.get('email')?.errors?.['email']">Enter a valid email</span>
+    </div>
+
+    <input
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      autocomplete="new-password"
+      [ngClass]="{'invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}"
+    />
+    <div class="error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+      Password is required
+    </div>
+
+    <button type="submit">Register</button>
+
+    <p>
+      Already have an account?
+      <span class="link" (click)="routertoLogin()">Login</span>
+    </p>
+  </form>
+</div>

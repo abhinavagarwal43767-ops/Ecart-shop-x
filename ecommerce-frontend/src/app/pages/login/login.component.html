@@ -1,0 +1,35 @@
+<div class="auth">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" autocomplete="off">
+    <h2>Welcome Back</h2>
+
+    <input
+      type="email"
+      placeholder="Email"
+      formControlName="email"
+      autocomplete="new-email"
+      [ngClass]="{'invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}"
+    />
+    <div class="error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+      <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
+      <span *ngIf="loginForm.get('email')?.errors?.['email']">Enter a valid email</span>
+    </div>
+
+    <input
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      autocomplete="new-password"
+      [ngClass]="{'invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+    />
+    <div class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      Password is required
+    </div>
+
+    <button type="submit">Login</button>
+
+    <p>
+      Don’t have an account?
+      <span class="link" (click)="routertoRegister()">Register</span>
+    </p>
+  </form>
+</div>

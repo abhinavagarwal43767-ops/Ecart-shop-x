@@ -1,0 +1,27 @@
+<header>
+  <div class="logo" routerLink="/">ShopX</div>
+
+  <nav [class.show]="open">
+    <a routerLink="/">Home</a>
+    <a routerLink="/products">Products</a>
+    <a *ngIf="token" routerLink="/cart">Cart</a>
+    <a *ngIf="!token" routerLink="/login">Login</a>
+    <a *ngIf="token" (click)="confirmLogout()">Logout</a>
+  </nav>
+
+  <div class="menu" (click)="open = !open">☰</div>
+</header>
+
+<!-- Logout Modal -->
+<div class="logout-backdrop" *ngIf="showLogoutModal">
+  <div class="logout-modal">
+    <div class="icon">⚠️</div>
+    <h3>Confirm Logout</h3>
+    <p>You will be signed out of your account.</p>
+
+    <div class="actions">
+      <button class="btn cancel" (click)="cancelLogout()">Cancel</button>
+      <button class="btn confirm" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</div>

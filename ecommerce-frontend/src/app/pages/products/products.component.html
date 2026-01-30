@@ -1,0 +1,26 @@
+<section class="product-wrapper">
+  <h1 class="title">Products</h1>
+
+  <div class="categories">
+    <button *ngFor="let cat of categories" (click)="selectCategory(cat._id)" [class.active]="selectedCategory === cat._id">{{ cat.name }}</button>
+  </div>
+
+  <input type="text" placeholder="Search Products..." [(ngModel)]="searchText" class="search-bar" />
+
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let p of filteredProducts()">
+      <div class="image-box">
+        <img [src]="p.image" />
+        <span class="badge">New</span>
+      </div>
+      <div class="content">
+        <h3>{{ p.name }}</h3>
+        <p class="desc">{{ p.description }}</p>
+        <div class="price-row">
+          <span class="price">₹ {{ p.price }}</span>
+          <button (click)="addToCart(p._id)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

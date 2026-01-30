@@ -1,0 +1,131 @@
+<section class="hero">
+  <div class="hero-content">
+    <h1>Shop Smarter. Live Better.</h1>
+    <p>Premium products with fast delivery and trusted quality</p>
+    <button (click)="shopNow()">Shop Now</button>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <h3>Fast Delivery</h3>
+    <p>Get your orders delivered within 24 hours.</p>
+  </div>
+  <div class="feature-card">
+    <h3>Secure Payments</h3>
+    <p>100% safe and encrypted transactions.</p>
+  </div>
+  <div class="feature-card">
+    <h3>Premium Quality</h3>
+    <p>Only trusted and verified products.</p>
+  </div>
+</section>
+
+<section class="categories-section">
+  <h2 class="section-title">Popular Categories</h2>
+
+  <div class="category-container">
+    <div class="category-card" *ngFor="let cat of categories" (click)="selectCategory(cat._id)">
+      <div class="icon-box">
+        <img [src]="cat.icon || 'https://cdn-icons-png.flaticon.com/512/3081/3081559.png'">
+      </div>
+      <span>{{ cat.name }}</span>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-container">
+    <h2>About Our Store</h2>
+    <p class="about-intro">
+      We believe shopping should be simple, reliable, and enjoyable.
+    </p>
+
+    <p>
+      Our store is built with a customer-first mindset. From carefully curated
+      products to seamless checkout and fast delivery, every detail is designed
+      to give you the best online shopping experience.
+    </p>
+
+    <p>
+      With a growing network of trusted sellers and quality checks at every step,
+      we ensure that what you order is exactly what you receive — no compromises.
+    </p>
+
+    <div class="about-stats">
+      <div>
+        <h3>10K+</h3>
+        <span>Happy Customers</span>
+      </div>
+      <div>
+        <h3>5K+</h3>
+        <span>Products</span>
+      </div>
+      <div>
+        <h3>24/7</h3>
+        <span>Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2>What Our Customers Say</h2>
+
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p>
+        “The product quality exceeded my expectations and delivery was super fast.
+        I’ll definitely shop again.”
+      </p>
+      <span>— Rahul Sharma</span>
+    </div>
+
+    <div class="testimonial-card">
+      <p>
+        “Smooth checkout, great pricing, and excellent support.
+        One of the best shopping platforms I’ve used.”
+      </p>
+      <span>— Priya Verma</span>
+    </div>
+
+    <div class="testimonial-card">
+      <p>
+        “Customer service is amazing. They resolved my issue within minutes.
+        Highly recommended!”
+      </p>
+      <span>— Aman Gupta</span>
+    </div>
+  </div>
+</section>
+
+
+<section class="contact">
+  <h2>Contact Us</h2>
+  <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+
+    <input type="text" placeholder="Your Name" formControlName="name">
+    <div class="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+      Name is required.
+    </div>
+
+    <input type="email" placeholder="Your Email" formControlName="email">
+    <div class="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+      <div *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</div>
+      <div *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email format.</div>
+    </div>
+
+    <textarea rows="4" placeholder="Your Message" formControlName="message"></textarea>
+    <div class="error" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid">
+      Message is required.
+    </div>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+</section>
+
+
+<footer class="footer">
+  <p>© 2026 YourStore. All rights reserved.</p>
+</footer>
